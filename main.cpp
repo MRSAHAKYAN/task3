@@ -41,9 +41,8 @@ int main(int argc, char *argv[])
 
 void countingSort(int *array, int size)
 {
-    int max;
-    int min;
-    max = min, min = max;
+    int max = array[0];
+    int min = array[0];
     for (int i = 0; i < size; ++i)
     {
         if (array[i] > max)
@@ -56,9 +55,9 @@ void countingSort(int *array, int size)
         }
     }
 
-    int *sortArray = new int[max + 1 - min];
+    int *sortArray = new int[(max - min) + 1];
 
-    for (int i = 0; i < max + 1 - min; ++i)
+    for (int i = 0; i < (max - min) + 1; ++i)
     {
         sortArray[i] = 0;
     }
@@ -79,6 +78,7 @@ void countingSort(int *array, int size)
             i++;
         }
     }
+    delete[] sortArray;
 }
 
 void print(int *array, int size)
